@@ -18,6 +18,19 @@ namespace api_todos.Controllers
         //TODOS
 
         //GET Id
+        [HttpGet("{id}")]
+        public ActionResult ObterPorId(int id)
+        {
+
+            var todo = _context.Todos.Find(id);
+
+            if(todo == null) {
+                return NotFound();
+            }
+
+            return Ok(todo);
+
+        }
 
         //GET ObterCompleto
 
