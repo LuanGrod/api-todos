@@ -105,6 +105,23 @@ namespace api_todos.Controllers
         }
 
         //DELETE Id
+        [HttpDelete("{id}")]
+        public ActionResult Delete(int id)
+        {
+
+            var todo = _context.Todos.Find(id);
+
+            if (todo == null)
+            {
+                return NotFound();
+            }
+
+            _context.Todos.Remove(todo);
+            _context.SaveChanges();
+
+            return NoContent();
+
+        }
 
     }
 }
