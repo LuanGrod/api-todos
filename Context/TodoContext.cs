@@ -1,3 +1,4 @@
+using api_todos.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace api_todos.Context
@@ -9,5 +10,6 @@ namespace api_todos.Context
 
         }
 
+        public DbSet<Todo> Todos { get; set; }
     }
 }
