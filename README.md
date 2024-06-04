@@ -23,7 +23,7 @@ Uma simples API para colocar em prática os conhecimentos de ASP.NET Core Web AP
 |        GET        | /Todo/ObterPorStatus   | Retorna todos os TODOS que tenham esse status                                                        |
 |        POST       | /Todo                  | Cria um TODO, passando pelo body o TODO                           |
 |        PUT        | /Todo/{id}             | Atualiza o TODO com o id passado, passando pelo body o TODO |
-|        GET        | /Todo/{id}             | Apaga o TODO com base no id passado                                                                  |
+|        DELETE        | /Todo/{id}             | Apaga o TODO com base no id passado                                                                  |
 
 # Autores
 
