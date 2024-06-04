@@ -17,6 +17,29 @@ namespace api_todos.Controllers
 
         //TODOS
 
+        //POST
+        [HttpPost]
+        public ActionResult Create(Todo todo)
+        {
+
+            _context.Todos.Add(todo);
+            _context.SaveChanges();
+
+            return CreatedAtAction(nameof(ObterPorId), new { id = todo.Id }, todo);
+
+        }
+
+        //GET ObterCompleto
+        [HttpGet("")]
+        public ActionResult ObterCompleto()
+        {
+
+            var todos = _context.Todos.ToList();
+
+            return Ok(todos);
+
+        }
+
         //GET Id
         [HttpGet("{id}")]
         public ActionResult ObterPorId(int id)
@@ -33,17 +56,6 @@ namespace api_todos.Controllers
 
         }
 
-        //GET ObterCompleto
-        [HttpGet("")]
-        public ActionResult ObterCompleto()
-        {
-
-            var todos = _context.Todos.ToList();
-
-            return Ok(todos);
-
-        }
-
         //GET ObterPorConteudo
         [HttpGet("ObterPorConteudo")]
         public ActionResult ObterPorConteudo(string texto)
@@ -56,16 +68,13 @@ namespace api_todos.Controllers
         }
 
         //GET ObterPorStatus
-
-        //POST
-        [HttpPost]
-        public ActionResult Create(Todo todo)
+        [HttpGet("ObterPorStatus")]
+        public ActionResult ObterPorStatus(bool status)
         {
 
-            _context.Todos.Add(todo);
-            _context.SaveChanges();
+            var todos = _context.Todos.Where(x => x.Status == status);
 
-            return CreatedAtAction(nameof(ObterPorId), new { id = todo.Id }, todo);
+            return Ok(todos);
 
         }
 
