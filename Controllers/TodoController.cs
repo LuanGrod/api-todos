@@ -44,7 +44,16 @@ namespace api_todos.Controllers
 
         }
 
-        //GET ObterPorNome
+        //GET ObterPorConteudo
+        [HttpGet("ObterPorConteudo")]
+        public ActionResult ObterPorConteudo(string texto)
+        {
+
+            var todos = _context.Todos.Where(x => x.Conteudo.Contains(texto));
+
+            return Ok(todos);
+
+        }
 
         //GET ObterPorStatus
 
