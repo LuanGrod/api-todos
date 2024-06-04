@@ -79,6 +79,30 @@ namespace api_todos.Controllers
         }
 
         //PUT Id
+        [HttpPut("{id}")]
+        public ActionResult Update(int id, Todo todo)
+        {
+
+            if (id != todo.Id)
+            {
+                return BadRequest();
+            }
+
+            var todoAtual = _context.Todos.Find(id);
+
+            if (todoAtual == null)
+            {
+                return NotFound();
+            }
+
+            todoAtual.Conteudo = todo.Conteudo;
+            todoAtual.Status = todo.Status;
+
+            _context.SaveChanges();
+
+            return Ok(todoAtual);
+
+        }
 
         //DELETE Id
 
