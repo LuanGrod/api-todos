@@ -24,7 +24,8 @@ namespace api_todos.Controllers
 
             var todo = _context.Todos.Find(id);
 
-            if(todo == null) {
+            if (todo == null)
+            {
                 return NotFound();
             }
 
@@ -33,6 +34,15 @@ namespace api_todos.Controllers
         }
 
         //GET ObterCompleto
+        [HttpGet("")]
+        public ActionResult ObterCompleto()
+        {
+
+            var todos = _context.Todos.ToList();
+
+            return Ok(todos);
+
+        }
 
         //GET ObterPorNome
 
